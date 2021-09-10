@@ -19,14 +19,13 @@ mongoose.connect(MONGODB_URI, {useNewUrlParser:true, useUnifiedTopology:true, us
 .then(() => console.log(`Successfully connected to the MongoDB database.`))
 .catch(error => console.log(`Failed to connect to the database!`, error.message))
 
+app.use(cors())
 app.use(express.static('build'))
 
 app.use(express.json({ limit: "30mb", extended: true}))
 app.use(express.urlencoded({ limit: "30mb", extended: true}))
 
 app.use(morgan(':method :url :status :res[content-length] :response-time ms :body'))
-
-app.use(cors())
 
 app.use('/api/dogs', dogsRouter)
 app.use('/api/user', userRouter)
