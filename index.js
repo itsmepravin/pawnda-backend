@@ -32,4 +32,4 @@ app.use('/user', userRouter)
 app.use(unknownEndpoint)
 app.use(errorHandler)
 
-app.listen(PORT, 'localhost' || '192.168.1.103', () => console.log(`Server up and running at PORT : ${PORT}`))
+app.listen(PORT, () => console.log(`Server up and running at PORT : ${PORT}`))
