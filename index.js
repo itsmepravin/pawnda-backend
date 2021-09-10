@@ -25,7 +25,7 @@ app.use(express.urlencoded({ limit: "30mb", extended: true}))
 app.use(morgan(':method :url :status :res[content-length] :response-time ms :body'))
 
 app.use(cors())
-app.use('/', (req, res) => res.status(200).send('<h1>It is working</h1>'))
+
 app.use('/dogs', dogsRouter)
 app.use('/user', userRouter)
 
