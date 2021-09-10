@@ -28,8 +28,8 @@ app.use(morgan(':method :url :status :res[content-length] :response-time ms :bod
 
 app.use(cors())
 
-app.use('/dogs', dogsRouter)
-app.use('/user', userRouter)
+app.use('/api/dogs', dogsRouter)
+app.use('/api/user', userRouter)
 
 app.use(unknownEndpoint)
 app.use(errorHandler)
