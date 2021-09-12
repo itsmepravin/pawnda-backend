@@ -87,7 +87,7 @@ export const forgotpassword = async (req, res) => {
 	
 	await user.save()
 
-	const resetUrl = `http://localhost:3000/auth/resetpassword/${resetToken}`
+	const resetUrl = `https://pawnda.netlify.app/auth/resetpassword/${resetToken}`
 
 	const options = {
 		to : user.email,
@@ -102,12 +102,12 @@ export const forgotpassword = async (req, res) => {
 
 	try {
 		await sendEmail(options)
-		res.status(200).json({"SUCCESS" : 'Email was successfully sent.'})
+		res.status(200).json({"SUCCESS" : `The reset link has been sent to ${user.email}.`})
 	} catch(error) {
 		user.resetPasswordToken = undefined
 		user.resetPasswordExpire = undefined
 		await user.save()
-		res.status(500).json({"ERROR" : "Error sending email!"})
+		res.status(500).json({"ERROR" : "Error sending mail"})
 	}
 }
 
