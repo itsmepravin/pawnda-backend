@@ -23,6 +23,10 @@ const dogsSchema = mongoose.Schema({
 	createdAt: {
 		type: Date,
 		default: new Date()
+	},
+	userID: {
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User'
 	}
 })
 

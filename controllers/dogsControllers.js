@@ -32,7 +32,7 @@ export const getSinglePost = async (req, res) => {
 export const createPosts = async (req, res) => {
 	const body = req.body
 
-	const newPost = new Dogs(body)
+	const newPost = new Dogs({...body, userID : req.userId})
 	await newPost.save()
 
 	res.status(201).json(newPost)
