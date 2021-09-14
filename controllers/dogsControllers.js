@@ -16,7 +16,7 @@ export const getPostsBySearch = async (req, res) => {
 	const name = new RegExp(searchQuery, 'i')
 	const breed = new RegExp(searchQuery, 'i')
 
-	const searchedPosts = await Dogs.find( { $or : [ { name }, { breed }, { tags : { $in : tags.toLowerCase().split(',') } } ] } )
+	const searchedPosts = await Dogs.find( { $or : [ { name }, { breed }, { tags : { $in : tags.split(',') } } ] } )
 
 	res.status(200).json(searchedPosts)
 }
