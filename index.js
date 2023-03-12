@@ -20,6 +20,8 @@ const __dirname = dirname(fileURLToPath(import.meta.url))
 
 morgan.token('body', (req, res) => JSON.stringify(req.body))
 
+mongoose.set("strictQuery", false);
+
 mongoose.connect(MONGODB_URI, {useNewUrlParser:true, useUnifiedTopology:true, useFindAndModify:false, useCreateIndex:true})
 .then(() => console.log(`Successfully connected to the MongoDB database.`))
 .catch(error => console.log(`Failed to connect to the database!`, error.message))
